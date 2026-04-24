@@ -1,0 +1,51 @@
+{
+  "match_id": "IPL_2026_01",
+  "innings_id": "innings_1",
+  "batting_team": "RCB",
+  "bowling_team": "MI",
+  "include_extras": true,
+  "events": [
+    {
+      "striker_id": "p1",
+      "striker": "Virat Kohli",
+      "bowler_id": "p101",
+      "bowler": "Jasprit Bumrah",
+      "runs_off_bat": 1,
+      "extras": 0,
+      "is_legal_delivery": true,
+      "wicket_fell": false
+    },
+    {
+      "striker_id": "p2",
+      "striker": "Faf du Plessis",
+      "bowler_id": "p101",
+      "bowler": "Jasprit Bumrah",
+      "runs_off_bat": 0,
+      "extras": 1,
+      "extra_type": "wide",
+      "is_legal_delivery": false,
+      "wicket_fell": false
+    },
+    {
+      "striker_id": "p2",
+      "striker": "Faf du Plessis",
+      "bowler_id": "p101",
+      "bowler": "Jasprit Bumrah",
+      "runs_off_bat": 4,
+      "extras": 0,
+      "is_legal_delivery": true,
+      "wicket_fell": false
+    },
+    {
+      "striker_id": "p2",
+      "striker": "Faf du Plessis",
+      "bowler_id": "p101",
+      "bowler": "Jasprit Bumrah",
+      "runs_off_bat": 0,
+      "extras": 0,
+      "is_legal_delivery": true,
+      "wicket_fell": true,
+      "wicket_type": "bowled"
+    }
+  ]
+}

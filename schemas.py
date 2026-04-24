@@ -1,35 +1,53 @@
 from typing import List, Optional
-from pydantic import BaseModel
+from pydantic import BaseModel, Field, field_validator
+from enum import Enum
 
 
-class Batter(BaseModel):
-    name: str
-    runs: int
-    balls: int
-    fours: int = 0
-    sixes: int = 0
+# -----------------------------
+# ENUMS
+# -----------------------------
+class ExtraType(str, Enum):
+    wide = "wide"
+    no_ball = "no_ball"
+    bye = "bye"
+    leg_bye = "leg_bye"
 
 
-class Bowler(BaseModel):
-    name: str
-    balls: int
-    wickets: int
-    runs_conceded: int
+# -----------------------------
+# BALL EVENT
+# -----------------------------
+class BallEvent(BaseModel):
+    striker_id: str
+    striker: str
+
+    bowler_id: str
+    bowler: str
+
+    runs_off_bat: int = Field(ge=0)
+    extras: int = Field(default=0, ge=0)
+    extra_type: Optional[ExtraType] = None
+
+    is_legal_delivery: bool = True
+    wicket_fell: bool = False
+
+    @field_validator("runs_off_bat", "extras")
+    @classmethod
+    def non_negative(cls, v):
+        if v < 0:
+            raise ValueError("Runs cannot be negative")
+        return v
 
 
+# -----------------------------
+# MATCH PAYLOAD
+# -----------------------------
 class MatchPayload(BaseModel):
+    match_id: str
+    innings_id: str
+
     batting_team: str
     bowling_team: str
 
-    total_runs: int
-    wickets: int
-    balls_bowled: int
+    events: List[BallEvent]
 
-    total_overs: int = 20
-    target: Optional[int] = None
-    extras: int = 0
-
-    batters: List[Batter]
-    bowlers: List[Bowler]
-
-    recent_balls: List[str] = []
+    include_extras: bool = False
