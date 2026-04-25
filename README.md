@@ -1,11 +1,22 @@
- Cricket Summary API
-● API Objective
-This is a real-time Cricket Summary API that generates a complete innings summary from ball-by-ball events. It calculates score, run rate, wickets, phases, player stats, and extras dynamically.
---------------------------------------------------------------------------------
-● Endpoints
-GET / GET /health POST /summary
---------------------------------------------------------------------------------
-● Input Schema
+# 📘 Cricket Summary API
+
+## ● API Objective
+This is a real-time **Cricket Summary API** that generates a complete innings summary from ball-by-ball events.  
+It calculates score, run rate, wickets, phases, player stats, and extras dynamically.
+
+---
+
+## ● Endpoints
+
+GET  /
+GET  /health
+POST /summary
+
+---
+
+## ● Input Schema
+
+```json
 {
   "match_id": "match_01",
   "innings_id": "innings_1",
