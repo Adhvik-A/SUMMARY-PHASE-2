@@ -5,8 +5,8 @@ from schemas import MatchPayload
 from services import compute_match_summary
 
 app = FastAPI(
-    title="Cricket Score Analytics API",
-    description="Event-driven cricket innings engine that computes full match analytics from ball-by-ball data.",
+    title="Cricket Summary API",
+    description="API that calculates match summary",
     version="2.0"
 )
 
@@ -30,11 +30,11 @@ app.add_middleware(
 def root():
     return {
         "meta": {
-            "api": "cricket-score-api",
+            "api": "cricket-summary-api",
             "version": "2.0",
             "status": "running"
         },
-        "message": "Welcome to Cricket Score Analytics API",
+        "message": "Welcome to Cricket Summary API",
         "available_endpoints": [
             "/health",
             "/scoreboard"
@@ -53,7 +53,7 @@ def health():
 # -----------------------------
 # MAIN API
 # -----------------------------
-@app.post("/scoreboard")
+@app.post("/summary")
 def scoreboard(payload: MatchPayload):
     try:
         return compute_match_summary(payload.model_dump())
