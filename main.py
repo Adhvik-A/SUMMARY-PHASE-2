@@ -37,7 +37,7 @@ def root():
         "message": "Welcome to Cricket Summary API",
         "available_endpoints": [
             "/health",
-            "/scoreboard"
+            "/summary"
         ]
     }
 
